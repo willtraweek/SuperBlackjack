@@ -11,13 +11,16 @@ class Player{
 		~Player();
 
 		int GetBalance();
-		void AdjustBalance(int);
+		void AdjustBalance(bool);
+		void SetBet(int);
 		void save();
+
 
 		Die * die;
 		Deck * deck;
 	private:
 		int balance;
+		int bet;
 };
 
 #endif

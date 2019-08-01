@@ -6,6 +6,7 @@
 using namespace std;
 
 Player::Player(){
+	cout << "Loading Bank Balance\n";
 	ifstream file("../savefile/BankBalance.txt");
 	if(file.good()){
 		file >> balance;
@@ -14,8 +15,12 @@ Player::Player(){
 	}
 	file.close();
 
+	cout << "You have $" << balance <<".";
+
 	Deck * deck = new Deck();
 	Die * die = new Die();
+
+	bet = 0;
 }
 
 Player::~Player(){
@@ -27,8 +32,16 @@ int Player::GetBalance(){
 	return balance;
 }
 
-void Player::AdjustBalance(int changeInCash){
-	balance = balance + changeInCash;
+void Player::AdjustBalance(bool win){
+	if(win){
+		balance += bet;
+	}else{
+		balance -= bet;
+	}
+}
+
+void Player::SetBet(int bet){
+	this -> bet = bet;
 }
 
 void Player::save(){
