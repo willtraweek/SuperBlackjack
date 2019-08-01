@@ -9,64 +9,63 @@ Die::Die(){
 }
 
 Die::~Die(){
-
 }
 
 void Die::print(){
 	switch(value){
 		case 1:
-			cout << "+---------------+" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "|       *       |" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "|       *       |\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "+---------------+\n";
 			break;
 		case 2:
-			cout << "+---------------+" << endl;
-			cout << "|   *           |" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "|           *   |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|   *           |\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "|           *   |\n";
+			cout << "+---------------+\n";
 			break;
 		case 3:
-			cout << "+---------------+" << endl;
-			cout << "|   *           |" << endl;
-			cout << "|               |" << endl;
-			cout << "|       *       |" << endl;
-			cout << "|               |" << endl;
-			cout << "|           *   |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|   *           |\n";
+			cout << "|               |\n";
+			cout << "|       *       |\n";
+			cout << "|               |\n";
+			cout << "|           *   |\n";
+			cout << "+---------------+\n";
 			break;
 		case 4:
-			cout << "+---------------+" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "|               |" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|   *       *   |\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "|               |\n";
+			cout << "|   *       *   |\n";
+			cout << "+---------------+\n";
 			break;
 		case 5:
-			cout << "+---------------+" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "|               |" << endl;
-			cout << "|       *       |" << endl;
-			cout << "|               |" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|   *       *   |\n";
+			cout << "|               |\n";
+			cout << "|       *       |\n";
+			cout << "|               |\n";
+			cout << "|   *       *   |\n";
+			cout << "+---------------+\n";
 			break;
 		case 6:
-			cout << "+---------------+" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "|               |" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "|               |" << endl;
-			cout << "|   *       *   |" << endl;
-			cout << "+---------------+" << endl;
+			cout << "+---------------+\n";
+			cout << "|   *       *   |\n";
+			cout << "|               |\n";
+			cout << "|   *       *   |\n";
+			cout << "|               |\n";
+			cout << "|   *       *   |\n";
+			cout << "+---------------+\n";
 			break;
 	}
 }

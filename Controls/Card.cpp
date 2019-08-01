@@ -21,11 +21,11 @@ enum CARDS {TWO = 2,
 Card::Card(int value){
 	this -> letter = '\0';
 
-	if(name < 11){
-		this -> value = name;
+	if(value < 11){
+		this -> value = value;
 	}
 
-	switch(name){
+	switch(value){
 		case JACK:
 			this -> value = 10;
 			this -> letter = 'J';
