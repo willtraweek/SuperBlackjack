@@ -40,8 +40,11 @@ void Player::AdjustBalance(bool win){
 	}
 }
 
-void Player::SetBet(int bet){
-	this -> bet = bet;
+void Player::SetBet(){
+	cout << "How many dollars would you like to bet?\n";
+	int bet;
+	cin >> bet;
+	this->bet = bet;
 }
 
 void Player::save(){

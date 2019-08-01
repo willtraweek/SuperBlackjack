@@ -12,7 +12,7 @@ class Player{
 
 		int GetBalance();
 		void AdjustBalance(bool);
-		void SetBet(int);
+		void SetBet();
 		void save();
 
 
