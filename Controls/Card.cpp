@@ -18,9 +18,8 @@ enum CARDS {TWO = 2,
 			KING = 13,
 			ACE = 14};
 
-Card::Card(int name){
+Card::Card(int value){
 	this -> letter = '\0';
-	this -> name = name;
 
 	if(name < 11){
 		this -> value = name;
@@ -56,28 +55,28 @@ int Card::GetValue(){
 
 void Card::print(){
 	if(value < 10){
-		cout << "+---------+" << endl;
-		cout << "| " << value << "       |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|       " << value << " |" << endl;
-		cout << "+---------+" << endl;
+		cout << "+---------+\n";
+		cout << "| " << value << "       |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|       " << value << " |\n";
+		cout << "+---------+\n";
 	}else if(letter == '\0' && value == 10){
-		cout << "+---------+" << endl;
-		cout << "| 10      |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|      10 |" << endl;
-		cout << "+---------+" << endl;
+		cout << "+---------+\n";
+		cout << "| 10      |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|      10 |\n";
+		cout << "+---------+\n";
 	}else{
-		cout << "+---------+" << endl;
-		cout << "| " << letter << "       |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|   ***   |" << endl;
-		cout << "|      " << letter << "  |" << endl;
-		cout << "+---------+" << endl;
+		cout << "+---------+\n";
+		cout << "| " << letter << "       |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|   ***   |\n";
+		cout << "|      " << letter << "  |\n";
+		cout << "+---------+\n";
 	}
 }

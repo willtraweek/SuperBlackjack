@@ -13,7 +13,6 @@ class Card {
 	    void print();
 	private:
 		int value;
-		int name;
 		char letter;
 };
 
