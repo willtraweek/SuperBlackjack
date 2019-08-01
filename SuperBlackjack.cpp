@@ -5,16 +5,10 @@
 using namespace std;
 
 int main(){
-	Deck deck = Deck();
-
-	cout << endl;
-	deck.draw().print();
-
-	Die die = Die();
-	die.roll();
-	die.print();
-
-	Player player = Player();
-	cout << player.GetBalance() << endl;
-	player.save();
+	cout << "Welcome to Super Blackjack\n\n";
+	char continueGame = 'y';
+	while(continueGame != 'q'){
+		cout << "Would you like to play again?\nPlease type 'q' to quit or any other letter to continue.\n";
+		cin >> continueGame;
+	}
 }
