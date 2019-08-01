@@ -13,6 +13,22 @@ Player::Player(){
 		balance = 100;
 	}
 	file.close();
+
+	Deck * deck = new Deck();
+	Die * die = new Die();
+}
+
+Player::~Player(){
+	delete deck;
+	delete die;
+}
+
+int Player::GetBalance(){
+	return balance;
+}
+
+void Player::AdjustBalance(int changeInCash){
+	balance = balance + changeInCash;
 }
 
 void Player::save(){
@@ -24,7 +40,5 @@ void Player::save(){
 	cout << balance << endl;
 }
 
-int Player::GetBalance(){
-	return balance;
-}
+
 

@@ -8,14 +8,16 @@
 class Player{
 	public:
 		Player();
+		~Player();
 
 		int GetBalance();
-		void PlayerTurn();
+		void AdjustBalance(int);
 		void save();
+
+		Die * die;
+		Deck * deck;
 	private:
 		int balance;
-		Die die;
-		Deck deck;
 };
 
 #endif
