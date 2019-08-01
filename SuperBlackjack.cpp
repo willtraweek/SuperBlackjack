@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Controls/Deck.h"
 #include "Controls/Die.h"
 #include "Controllers/Player.h"
@@ -14,4 +13,8 @@ int main(){
 	Die die = Die();
 	die.roll();
 	die.print();
+
+	Player player = Player();
+	cout << player.GetBalance() << endl;
+	player.save();
 }
