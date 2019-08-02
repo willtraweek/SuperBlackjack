@@ -143,6 +143,12 @@ void Table::TakeTurn(){
 
 	cout << "\nDealer Hand Value: " << dealerValue << "\n";
 
+	while(dealerValue < 17){
+		cout << "\nDealer Hits...\n";
+		dealerValue += deal(1, dealerhand);
+		dealerhand -> back() -> print();
+	}
+
 	cout << "\nYou had " << playerValue << " and the dealer had " << dealerValue << "\n";
 
 	if(playerValue>dealerValue){
