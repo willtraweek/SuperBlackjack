@@ -18,16 +18,16 @@ Table::Table(){
 
 	cout << "You have $" << balance <<"\n\n";
 
-	Deck * deck = new Deck();
-	Die * die = new Die();
+	deck = new Deck();
+	die = new Die();
 
 	bet = 0;
 }
 
 Table::~Table(){
 	//TODO: DEALLOCATE FROM HEAP
-	//delete deck;
-	//delete die;
+	delete this -> die;
+	delete this -> deck;
 }
 
 int Table::GetBalance(){
@@ -67,7 +67,7 @@ void Table::SetBet(){
 }
 
 void Table::save(){
-	//TODO:: MAKE IT SO THAT THIS CAN CREATE A NEW FILE
+	//TODO: MAKE IT SO THAT THIS CAN CREATE A NEW FILE
 	ofstream file;
 	file.open("../savefile/BankBalance.txt");
 	file << balance;
