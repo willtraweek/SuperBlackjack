@@ -6,7 +6,6 @@
 using namespace std;
 
 Table::Table(){
-	cout << "\nLoading Bank Balance\n\n";
 	ifstream file("./savefiles/BankBalance.txt");
 	if(file.good()){
 		file >> balance;
@@ -15,18 +14,18 @@ Table::Table(){
 	}
 	file.close();
 
-	cout << "You have $" << balance <<"\n\n";
-
 	deck = new Deck();
-	die = new Die();
+	playerhand = new vector<GamePiece * >;
+	dealerhand = new vector<GamePiece * >;
 
 	bet = 0;
 }
 
 Table::~Table(){
 	save();
-	delete this -> die;
-	delete this -> deck;
+	delete deck;
+	delete playerhand;
+	delete dealerhand;
 }
 
 int Table::GetBalance(){
@@ -42,7 +41,7 @@ void Table::AdjustBalance(bool win){
 }
 
 void Table::SetBet(){
-	cout << "How many dollars would you like to bet?\n";
+	cout << "How many dollars would you like to bet?\nYou have $" << this -> balance << " to bet\n";
 	int bet;
 	cin >> bet;
 	bool betIsOkay = false;
@@ -67,44 +66,93 @@ void Table::SetBet(){
 
 void Table::save(){
 	ofstream file ("./savefiles/BankBalance.txt");
-	
-	if(file.is_open()){
-		cout << "\nFILE OPENED\n";
-	}else{
-		cout << "\nFAILED TO OPEN\n";
-	}
 
 	file << balance;
 	file.close();
-	cout << balance << endl;
 }
 
-int Table::deal(int numToDraw, vector<GamePiece * > hand){
+int Table::deal(int numToDraw, vector<GamePiece * > * hand){
 	int cardValue = 0;
 	for(int i = 0; i < numToDraw; i++){
-		hand.push_back(deck -> draw());
-		hand.at(i) -> print();
-		cardValue += hand.at(i) -> GetValue();
+		hand -> push_back(deck -> draw());
+		cardValue += hand -> back() -> GetValue();
 	}
 
 	return cardValue;
 }
 
-void Table::TakeTurn(vector<GamePiece * > hand){
+int Table::roll(){
+	playerhand -> push_back(new Die());
+	return playerhand -> back() -> GetValue();
+}
+
+void Table::TakeTurn(){
+	cout << "Dealing Cards:\n\n";
+
+	int dealerValue = deal(2, dealerhand);
+
+	cout << "Dealer Shows:\n";
+	dealerhand -> at(0) -> print();
+
 	cout << "Player Hand:\n\n";
 
-	int handValue = deal(2, hand);
+	int playerValue = deal(2, playerhand);
+	playerhand -> at(0) -> print();
+	playerhand -> at(1) -> print();
+
 	bool isPlaying = true;
+	
+	cout << "Your hand value: " << playerValue << "\n\n";
 
 	while(isPlaying){
-		cout << "Your hand value: " << handValue << "\n\n";
-		if(handValue == 21){
+		if(playerValue == 21){
 			cout << "You got a blackjack!\nYou won $" << this -> bet << "\n\n";
 			AdjustBalance(true);
-			isPlaying = false;
-		}else if(handValue < 21){
-			
+			return;
+		}else if(playerValue < 21){
+			char playermove = 'q';
+
+			while(playermove != 'h' && playermove != 's' && playermove != 'r'){
+				cout << "\nWould you like to hit ('h'), stay ('s') or roll a die? ('r')\n";
+				cin >> playermove;
+				cout << "\n";
+			}
+
+			if(playermove == 'h'){
+				playerValue += deal(1, playerhand);
+				playerhand -> back() -> print();
+				cout << "\nYour hand value: " << playerValue << "\n";
+			}else if(playermove == 'r'){
+				playerValue += roll();
+				playerhand -> back() -> print();
+				cout << "\nYour hand value: " << playerValue << "\n";
+			}else{
+				isPlaying = false;
+			}
+		}else{
+			cout << "\nYour hand value: " << playerValue;
+			cout << "\nYou busted out and lost $" << this -> bet << "\n";
+			AdjustBalance(false);
+			return;
 		}
 	}
+
+	cout << "\nDealer Hand:\n";
+	dealerhand -> at(0) -> print();
+	dealerhand -> at(1) -> print();
+
+	cout << "\nDealer Hand Value: " << dealerValue << "\n";
+
+	cout << "\nYou had " << playerValue << " and the dealer had " << dealerValue << "\n";
+
+	if(playerValue>dealerValue){
+		cout << "You won $" << this -> bet << "\n";
+		AdjustBalance(true);
+	}else if(playerValue==dealerValue){
+		cout << "You and the dealer tied.  No money changes hands\n";
+	}else{
+		cout << "The dealer won\nYou lost $" << this -> bet << "\n";
+	}
+
 }
 

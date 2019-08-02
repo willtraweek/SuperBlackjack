@@ -6,6 +6,7 @@
 #include <fstream>
 #include <vector>
 
+
 class Table{
 	public:
 		Table();
@@ -16,17 +17,17 @@ class Table{
 		void SetBet();
 		void save();
 
-		int deal(int, std::vector<GamePiece * >);
+		int deal(int, std::vector<GamePiece * > *);
+		int roll();
 
-		void TakeTurn(std::vector<GamePiece * >);
+		void TakeTurn();
 		
 	private:
 		int balance;
 		int bet;
-		Die * die;
 		Deck * deck;
-		std::vector<GamePiece *> playerhand;
-		std::vector<GamePiece *> dealerhand;
+		std::vector<GamePiece *> * playerhand;
+		std::vector<GamePiece *> * dealerhand;
 };
 
 #endif
