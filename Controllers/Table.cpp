@@ -2,13 +2,12 @@
 #include "../Controls/Card.h"
 #include "../Controls/Deck.h"
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
 Table::Table(){
 	cout << "\nLoading Bank Balance\n\n";
-	ifstream file("../savefile/BankBalance.txt");
+	ifstream file("./savefiles/BankBalance.txt");
 	if(file.good()){
 		file >> balance;
 	}else{
@@ -25,7 +24,7 @@ Table::Table(){
 }
 
 Table::~Table(){
-	//TODO: DEALLOCATE FROM HEAP
+	save();
 	delete this -> die;
 	delete this -> deck;
 }
@@ -67,9 +66,14 @@ void Table::SetBet(){
 }
 
 void Table::save(){
-	//TODO: MAKE IT SO THAT THIS CAN CREATE A NEW FILE
-	ofstream file;
-	file.open("../savefile/BankBalance.txt");
+	ofstream file ("./savefiles/BankBalance.txt");
+	
+	if(file.is_open()){
+		cout << "\nFILE OPENED\n";
+	}else{
+		cout << "\nFAILED TO OPEN\n";
+	}
+
 	file << balance;
 	file.close();
 	cout << balance << endl;
