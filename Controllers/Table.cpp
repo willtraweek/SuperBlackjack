@@ -152,13 +152,17 @@ void Table::TakeTurn(){
 
 	cout << "\nYou had " << playerValue << " and the dealer had " << dealerValue << "\n";
 
-	if(playerValue>dealerValue){
+	if(dealerValue > 21){
+		cout << "The dealer busted\nYou won $" << this-> bet;
+		AdjustBalance(true);
+	}else if(playerValue>dealerValue){
 		cout << "You won $" << this -> bet << "\n";
 		AdjustBalance(true);
 	}else if(playerValue==dealerValue){
 		cout << "You and the dealer tied.  No money changes hands\n";
 	}else{
 		cout << "The dealer won\nYou lost $" << this -> bet << "\n";
+		AdjustBalance(false);
 	}
 
 }
