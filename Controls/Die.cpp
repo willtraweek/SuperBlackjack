@@ -1,6 +1,7 @@
 #include "Die.h"
 #include <iostream>
 #include <random>
+#include <time.h>
 
 using namespace std;
 
@@ -71,6 +72,7 @@ void Die::print(){
 }
 
 int Die::roll(){
+	srand(time(NULL));
 	value = rand() % 6 + 1;
 
 	return value;
