@@ -6,6 +6,7 @@
 using namespace std;
 
 Table::Table(){
+	srand(time(NULL));
 	ifstream file("./savefiles/BankBalance.txt");
 	if(file.good()){
 		file >> balance;

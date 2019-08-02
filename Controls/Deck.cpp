@@ -21,7 +21,7 @@ Deck::~Deck(){
 }
 
 Card * Deck::draw(){
-	srand(time(NULL));
+	//srand(time(NULL));
 	Card * card = deck.at(rand() % 13);
 
 	return card;

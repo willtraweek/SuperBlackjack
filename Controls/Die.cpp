@@ -72,7 +72,6 @@ void Die::print(){
 }
 
 int Die::roll(){
-	srand(time(NULL));
 	value = rand() % 6 + 1;
 
 	return value;
