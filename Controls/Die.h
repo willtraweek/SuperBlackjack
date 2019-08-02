@@ -2,8 +2,9 @@
 #define DIE_H
 
 #include <vector>
+#include "GamePiece.h"
 
-class Die{
+class Die : public GamePiece{
 	public:
 	    Die();
 	    ~Die();

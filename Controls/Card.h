@@ -2,8 +2,9 @@
 #define CARD_H
 
 #include <iostream>
+#include "GamePiece.h"
 
-class Card {
+class Card :public GamePiece{
 	public:
 	    Card(int name);
 	    ~Card();

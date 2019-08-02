@@ -19,8 +19,8 @@ Deck::~Deck(){
 	    
 }
 
-Card Deck::draw(){
+Card * Deck::draw(){
 	Card * card = deck.at(rand() % 13);
 
-	return * card;
+	return card;
 }

@@ -9,7 +9,7 @@ class Deck{
 	    Deck();
 	    ~Deck();
 
-	    Card draw();
+	    Card * draw();
 	private:
 		std::vector<Card *> deck;
 };
